@@ -10,8 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -29,10 +29,10 @@ public class Category {
 	private String code;
 	@Column(name = "NAME")
 	private String name;
-	@CreatedDate
+	@CreationTimestamp
 	@Column(name = "CREATED_AT")
 	private LocalDateTime createdAt;
-	@LastModifiedDate
+	@UpdateTimestamp
 	@Column(name = "LAST_MODIFIED_AT")
 	private LocalDateTime lastModifiedAt;
 }

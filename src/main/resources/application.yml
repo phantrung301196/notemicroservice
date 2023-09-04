@@ -1,6 +1,8 @@
 spring:
   application:
     name: notemicroservice
+  banner:
+    location: banner.txt
   devtools:
     restart:
       enabled: true

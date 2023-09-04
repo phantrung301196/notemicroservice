@@ -1,9 +1,12 @@
-package com.trunghp.notemicroservice.service.rest;
+package com.trunghp.notemicroservice.rest;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-
+import com.trunghp.notemicroservice.domain.Note;
+import com.trunghp.notemicroservice.service.DTO.NoteDTO;
+import com.trunghp.notemicroservice.service.DTO.request.NoteSearchRquest;
+import com.trunghp.notemicroservice.service.NoteService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trunghp.notemicroservice.domain.Note;
-import com.trunghp.notemicroservice.service.NoteService;
-import com.trunghp.notemicroservice.service.DTO.NoteDTO;
-import com.trunghp.notemicroservice.service.DTO.request.NoteSearchRquest;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
 
 @Slf4j
 @Transactional
@@ -31,7 +30,7 @@ public class NoteResource {
 	private final NoteService noteService;
 
 	@PostMapping
-	public ResponseEntity<NoteDTO> saveNote(@RequestBody NoteDTO noteDTORequest) throws URISyntaxException {
+	public ResponseEntity<NoteDTO> saveNote(@RequestBody @Valid NoteDTO noteDTORequest) throws URISyntaxException {
 		log.info("Request for create note");
 		NoteDTO noteDTO = noteService.save(new Note(noteDTORequest));
 		return ResponseEntity.created(new URI("/api/note")).body(noteDTO);
@@ -49,9 +48,10 @@ public class NoteResource {
 		log.info("Request for get all note");
 		return ResponseEntity.created(new URI("/api/note")).body(noteService.findAll());
 	}
-	
+
 	@PostMapping("/search")
-	public ResponseEntity<List<NoteDTO>> searchNotes(@RequestBody NoteSearchRquest noteSearchRquest) throws URISyntaxException{
+	public ResponseEntity<List<NoteDTO>> searchNotes(
+			@RequestBody NoteSearchRquest noteSearchRquest) throws URISyntaxException {
 		return ResponseEntity.created(new URI("/api/note")).body(noteService.findAll());
 	}
 }
