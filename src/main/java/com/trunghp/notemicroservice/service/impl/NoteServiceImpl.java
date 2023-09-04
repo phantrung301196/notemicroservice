@@ -23,7 +23,7 @@ public class NoteServiceImpl implements NoteService {
 //	private final NoteRepositorySearch noteRepositorySearch;
 
 	@EventListener(ApplicationReadyEvent.class)
-	public void initNoteDocumemnt() {
+	public void initNoteDocument() {
 //		noteRepositorySearch.deleteAll();
 //		noteRepositorySearch
 //				.saveAll(noteRepository.findAll().stream().map(NoteDocument::new).collect(Collectors.toList()));
