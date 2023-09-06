@@ -28,7 +28,7 @@ public class NoteServiceImpl implements NoteService {
 //		noteRepositorySearch
 //				.saveAll(noteRepository.findAll().stream().map(NoteDocument::new).collect(Collectors.toList()));
 //		noteRepository.findAll().stream().map(NoteDocument::new).collect(Collectors.toList());
-		noteRepository.deleteAll();
+//		noteRepository.deleteAll();
 	}
 
 	@Override

@@ -13,10 +13,13 @@ spring:
     serialization:
       indent-output: true
   jpa:
-     show-sql: true
+    show-sql: true
+    hibernate:
+       ddl-auto: update
+    open-in-view: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/notemicroservice?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/notemicroservice?useUnicode=true&characterEncoding=utf8&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
     username: trunghp
     password: MaiAnh@1234567
     hikari:
